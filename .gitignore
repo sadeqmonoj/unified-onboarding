@@ -54,3 +54,4 @@ TestResult.xml
 nunit-*.xml
 /.vs
 /src/UnifiedOnboading/.vs/UnifiedOnboarding.slnx
+/src/UnifiedOnboading/.vs
