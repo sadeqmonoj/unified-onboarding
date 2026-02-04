@@ -18,6 +18,18 @@
       "Anonymous": {
         "PermitLimit": 5,
         "Window": "1m"
+      },
+      "OtpSend": {
+        "PermitLimit": 3,
+        "Window": "15m"
+      },
+      "OtpVerify": {
+        "PermitLimit": 5,
+        "Window": "5m"
+      },
+      "OtpPerPhone": {
+        "PermitLimit": 5,
+        "Window": "1h"
       }
     }
   }

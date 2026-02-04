@@ -19,10 +19,13 @@ public static class VerifyOtpEndpoint
         })
         .WithTags("Otp")
         .WithDefaultBffConfig()
+        .RequireRateLimiting("OtpVerify")    
+        .RequireRateLimiting("OtpPerPhone")  
         .Produces<VerifyOtpResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)
         .ProducesProblem(StatusCodes.Status409Conflict)
+        .ProducesProblem(StatusCodes.Status429TooManyRequests)
         .WithName("VerifyOtp");
 
         return group;

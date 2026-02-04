@@ -15,7 +15,7 @@ public sealed class GetCurrentUserHandler : IRequestHandler<GetCurrentUserReques
         if (_currentUser.UserId is null)
         {
             return Result<GetCurrentUserResponse>.Fail(
-               Error.Unauthorized("User is not Authenticated.")
+               Error.Unauthorized("Unauthorized", "User is not Authenticated.")
            );
         }
 

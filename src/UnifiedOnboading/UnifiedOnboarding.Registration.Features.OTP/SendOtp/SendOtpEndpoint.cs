@@ -19,10 +19,13 @@ public static class SendOtpEndpoint
         })
         .WithTags("Otp")
         .WithDefaultBffConfig()
+        .RequireRateLimiting("OtpSend")
+        .RequireRateLimiting("OtpPerPhone")
         .Produces<SendOtpResponse>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .ProducesProblem(StatusCodes.Status404NotFound)
         .ProducesProblem(StatusCodes.Status409Conflict)
+        .ProducesProblem(StatusCodes.Status429TooManyRequests)
         .WithName("SendOtp");
 
         return group;

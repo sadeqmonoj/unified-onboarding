@@ -17,7 +17,7 @@ public sealed class SendOtpHandler : IRequestHandler<SendOtpRequest, Result<Send
         if (!result.IsSent)
         {
             return Result<SendOtpResponse>.Fail(
-                Error.Validation(result.Message)
+                Error.Server("Server", result.Message)
             );
         }
         return Result<SendOtpResponse>.Success(

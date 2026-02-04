@@ -2,27 +2,54 @@
 
 namespace Platform.BuildingBlocks.Results;
 
-public sealed record Error(
-    string Code,
-    string Message,
-    int HttpStatusCode = StatusCodes.Status400BadRequest
-)
+
+public sealed record Error
 {
-    public static Error Validation(string message)
-        => new("validation_error", message, StatusCodes.Status400BadRequest);
+    public string Code { get; init; }
+    public string Message { get; init; }
+    public ErrorType Type { get; init; }
+    public Dictionary<string, string[]>? ValidationErrors { get; init; }
 
-    public static Error NotFound(string message)
-        => new("not_found", message, StatusCodes.Status404NotFound);
+    private Error(ErrorType type, string code, string message, Dictionary<string, string[]>? validationErrors = null)
+    {
+        Type = type;
+        Code = code;
+        Message = message;
+        ValidationErrors = validationErrors;
+    }
 
-    public static Error Unauthorized(string message)
-        => new("unauthorized", message, StatusCodes.Status401Unauthorized);
+    // Factory methods
+    public static Error Validation(string code, string message, Dictionary<string, string[]>? errors = null)
+        => new(ErrorType.Validation, code, message, errors);
 
-    public static Error Forbidden(string message)
-        => new("forbidden", message, StatusCodes.Status403Forbidden);
+    public static Error NotFound(string code, string message)
+        => new(ErrorType.NotFound, code, message);
 
-    public static Error Conflict(string message)
-        => new("conflict", message, StatusCodes.Status409Conflict);
+    public static Error Unauthorized(string code, string message)
+        => new(ErrorType.Unauthorized, code, message);
 
-    public static Error Server(string message)
-        => new("server_error", message, StatusCodes.Status500InternalServerError);
+    public static Error Server(string code, string message)
+        => new(ErrorType.Server, code, message);
+
+    public static Error RateLimit(string message)
+        => new(ErrorType.RateLimit, "RATE_LIMIT_EXCEEDED", message);
+
+    // Predefined errors
+    public static Error OtpExpired()
+        => Validation("OTP_EXPIRED", "The OTP has expired");
+
+    public static Error OtpInvalid()
+        => Validation("OTP_INVALID", "The OTP is invalid");
+
+    public static Error ServiceUnavailable()
+        => Server("SERVICE_UNAVAILABLE", "Downstream service is temporarily unavailable");
+}
+
+public enum ErrorType
+{
+    Validation,
+    NotFound,
+    Unauthorized,
+    Server,
+    RateLimit
 }

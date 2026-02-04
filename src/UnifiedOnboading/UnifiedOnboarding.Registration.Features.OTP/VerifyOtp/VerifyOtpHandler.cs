@@ -17,7 +17,7 @@ public sealed class VerifyOtpHandler : IRequestHandler<VerifyOtpRequest, Result<
         if (!result.IsVerified)
         {
             return Result<VerifyOtpResponse>.Fail(
-                Error.Validation(result.Message)
+                Error.Server("Server", result.Message)
             );
         }
         return Result<VerifyOtpResponse>.Success(

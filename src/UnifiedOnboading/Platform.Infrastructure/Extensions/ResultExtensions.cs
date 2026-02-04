@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Platform.BuildingBlocks.Results;
 
 namespace Platform.Infrastructure.Extensions;
@@ -13,13 +12,38 @@ public static class ResultExtensions
             return Results.Ok(result.Value);
         }
 
-        return Results.Json(
-            new
+        Error error = result.Error!;
+
+        object payload;
+        if (error.Type == ErrorType.Validation)
+        {
+            payload = new
             {
-                error = result.Error!.Code,
-                message = result.Error!.Message
-            },
-            statusCode: result.Error.HttpStatusCode
+                error = error.Code,
+                message = error.Message,
+                errors = error.ValidationErrors
+            };
+        }
+        else
+        {
+            payload = new
+            {
+                error = error.Code,
+                message = error.Message
+            };
+        }
+
+        return Results.Json(
+            payload,
+            statusCode: error.Type switch
+            {
+                ErrorType.Validation => StatusCodes.Status400BadRequest,
+                ErrorType.NotFound => StatusCodes.Status404NotFound,
+                ErrorType.Unauthorized => StatusCodes.Status401Unauthorized,
+                ErrorType.RateLimit => StatusCodes.Status429TooManyRequests,
+                ErrorType.Server => StatusCodes.Status500InternalServerError,
+                _ => StatusCodes.Status500InternalServerError
+            }
         );
     }
 }

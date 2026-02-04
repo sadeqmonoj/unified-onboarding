@@ -17,12 +17,16 @@ public class OtpApi : IOtpApi
         _authOptions = authOptions.Value;
     }
 
-    public async Task<SendOtpResultDto> SendOtpAsync(string MobileNumber, CancellationToken cancellationToken)
+    public async Task<SendOtpResultDto> SendOtpAsync(string mobileNumber, CancellationToken cancellationToken)
     {
-        HttpResponseMessage? response = await _http.GetAsync($"api/sendOtp?MobileNumber", cancellationToken);
+        var request = new
+        {
+            MobileNumber = mobileNumber
+        };  
+        HttpResponseMessage? response = await _http.PostAsJsonAsync($"api/sendOtp", request, cancellationToken);
         response.EnsureSuccessStatusCode();
         return await response.Content!.ReadFromJsonAsync<SendOtpResultDto>(cancellationToken: cancellationToken)
-               ?? new SendOtpResultDto(false, "OTP Send Failed");
+               ?? throw new InvalidOperationException( "Null response from OTP Service.");
     }
 
     public async Task<VerifyOtpResultDto> VerifyOtpAsync(

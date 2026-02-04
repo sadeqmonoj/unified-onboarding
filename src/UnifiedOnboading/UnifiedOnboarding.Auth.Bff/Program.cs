@@ -27,7 +27,10 @@ builder.Services.AddInfrastructureServices(config);
 builder.Services.AddApiFeatures();
 
 WebApplication app = builder.Build();
+
 app.MapDefaultEndpoints();
+
+app.UseRateLimiter();
 
 // 3. Middlewares
 app.UseBffMiddlewares();

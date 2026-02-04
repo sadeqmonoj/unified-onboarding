@@ -7,9 +7,9 @@ public static class MiddlewareExtensions
 {
     public static IApplicationBuilder UseBffMiddlewares(this IApplicationBuilder app)
     {
+        
         app.UseCorrelationId();
         app.UseExceptionHandlerMiddleware();
-        app.UseRateLimiter();
 
         app.UseAuthentication();
         app.UseAuthorization();

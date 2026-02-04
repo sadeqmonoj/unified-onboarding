@@ -8,7 +8,7 @@ public static class MiddlewareExtensions
     {
         app.UseCorrelationId();
         app.UseExceptionHandlerMiddleware();
-        app.UseRateLimiter();
+        
 
         app.UseAuthentication();
         app.UseAuthorization();
