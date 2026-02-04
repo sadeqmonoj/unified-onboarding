@@ -1,0 +1,24 @@
+{
+  "RateLimit": {
+    "Global": {
+      "PermitLimit": 100,
+      "Window": "1m",
+      "QueueLimit": 0,
+      "QueueProcessingOrder": "OldestFirst"
+    },
+    "Policies": {
+      "PerIp": {
+        "PermitLimit": 20,
+        "Window": "1m"
+      },
+      "Authenticated": {
+        "PermitLimit": 50,
+        "Window": "1m"
+      },
+      "Anonymous": {
+        "PermitLimit": 5,
+        "Window": "1m"
+      }
+    }
+  }
+}

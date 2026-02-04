@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.0" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>64cfe4f2-b665-48da-9e39-66ea175c45fb</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UnifiedOnboarding.Auth.Bff\UnifiedOnboarding.Auth.Bff.csproj" />
+    <ProjectReference Include="..\UnifiedOnboarding.Registration.Bff\UnifiedOnboarding.Registration.Bff.csproj" />
+  </ItemGroup>
+
+</Project>

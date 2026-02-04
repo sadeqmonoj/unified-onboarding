@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+ unifiedonboarding-auth-bff:
+   image: unifiedonboarding.auth.bff:latest
+   container_name: unifiedonboarding-auth-bff
+   ports:
+     - "8080:8080"
+   environment:
+     ASPNETCORE_ENVIRONMENT: "Development"

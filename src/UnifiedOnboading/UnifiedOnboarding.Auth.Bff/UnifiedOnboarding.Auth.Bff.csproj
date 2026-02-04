@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>12ea0d9c-8b0d-46e9-98a2-123521d40570</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	</PropertyGroup>
+	<ItemGroup>		
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" />		
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />		
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Platform.Infrastructure\Platform.Infrastructure.csproj" />
+		<ProjectReference Include="..\UnifiedOnboarding.Auth.Features.Me\UnifiedOnboarding.Auth.Features.Me.csproj" />
+		<ProjectReference Include="..\UnifiedOnboarding.ServiceDefaults\UnifiedOnboarding.ServiceDefaults.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,6 @@
+@UnifiedOnboarding.Registration.Bff_HostAddress = http://localhost:5181
+
+GET {{UnifiedOnboarding.Registration.Bff_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

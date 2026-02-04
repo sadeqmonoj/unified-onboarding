@@ -1,0 +1,27 @@
+<Solution>
+  <Folder Name="/Aspire/">
+    <Project Path="UnifiedOnboarding.AppHost/UnifiedOnboarding.AppHost.csproj" Id="e84280b8-1ba3-49a6-890c-1b8bb9d546f3" />
+    <Project Path="UnifiedOnboarding.ServiceDefaults/UnifiedOnboarding.ServiceDefaults.csproj" Id="c9900f26-f118-4226-b1ca-dcdc44cd3d3b" />
+  </Folder>
+  <Folder Name="/Bff/" />
+  <Folder Name="/Bff/Auth/">
+    <Project Path="UnifiedOnboarding.Auth.Bff/UnifiedOnboarding.Auth.Bff.csproj" />
+    <Project Path="UnifiedOnboarding.Auth.Features.Me/UnifiedOnboarding.Auth.Features.Me.csproj" />
+  </Folder>
+  <Folder Name="/Bff/Registration/">
+    <Project Path="UnifiedOnboarding.Registration.Bff/UnifiedOnboarding.Registration.Bff.csproj" Id="f2f22378-b623-4012-9d98-53ed42421043" />
+    <Project Path="UnifiedOnboarding.Registration.Features.NidVerification/UnifiedOnboarding.Registration.Features.NidVerification.csproj" Id="27d65a7e-0118-4568-8107-5204c27ac139" />
+    <Project Path="UnifiedOnboarding.Registration.Features.OTP/UnifiedOnboarding.Registration.Features.OTP.csproj" Id="1388ce0e-eda1-4c86-af5f-010d151f8d2f" />
+  </Folder>
+  <Folder Name="/Platform/">
+    <Project Path="Platform.BuildingBlocks/Platform.BuildingBlocks.csproj" />
+    <Project Path="Platform.Contracts/Platform.Contracts.csproj" />
+    <Project Path="Platform.Infrastructure/Platform.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".dockerignore" />
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+</Solution>

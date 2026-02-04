@@ -1,0 +1,12 @@
+{
+  "Polly": {
+    "Retry": {
+      "RetryCount": 3,
+      "BaseDelaySeconds": 2
+    },
+    "CircuitBreaker": {
+      "AllowedBeforeBreaking": 5,
+      "BreakDurationSeconds": 30
+    }
+  }
+}

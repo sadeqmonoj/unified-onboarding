@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "UnifiedOnboarding.Auth.Bff\\UnifiedOnboarding.Auth.Bff.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "UnifiedOnboarding.Registration.Bff\\UnifiedOnboarding.Registration.Bff.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+﻿using Platform.BuildingBlocks.CustomMediator;
+
+namespace Platform.Infrastructure.CustomMediator;
+
+public interface IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+{
+    Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next);
+}
