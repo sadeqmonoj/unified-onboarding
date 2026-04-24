@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using FluentValidation;
 using FluentValidation.Results;
 using Platform.BuildingBlocks.CustomMediator;
