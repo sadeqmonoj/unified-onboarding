@@ -1,0 +1,29 @@
+name: ASP.NET 10 PR Check
+
+on: 
+  pull_reqeust:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Code
+        uses: actions/Checkout@v4
+
+      - name: Install .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore packages
+        run: dotnet restore src/UnifiedOnboading/UnifiedOnboarding.slnx
+
+      - name: Build Project
+        run: dotnet build src/UnifiedOnboading/UnifiedOnboarding.slnx --configuration Release --no-restore
+
+      - name: Run test
+        run: dotnet test src/UnifiedOnboading/UnifiedOnboarding.slnx --configuration Release --no-build
